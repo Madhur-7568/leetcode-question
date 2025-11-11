@@ -1,4 +1,6 @@
 #include<iostream>
+#include<vector>
+#include<algorithm>
 using namespace std;
 class Solution {
 public:
@@ -12,9 +14,10 @@ public:
         }
              return max;
     }
+};
     int main(){
+        Solution s1;
         vector<int>nums={1,4,3,2};
-        arrayPairSum(nums);
+     cout<<  s1. arrayPairSum(nums);
         return 0;
     }
-};

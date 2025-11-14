@@ -16,8 +16,9 @@ public:
         }
         return c;
     }
+};
     int main(){
-        climbStairs(4);
+        Solution s1;
+      cout<< s1. climbStairs(4);
         return 0;
     }
-};

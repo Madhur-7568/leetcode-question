@@ -1,0 +1,16 @@
+class Solution {
+public:
+    char repeatedCharacter(string s) {
+        int n=s.size();
+        int arr[26]={0};
+        for(int i=0;i<n;i++){
+            arr[s[i]-'a']++;
+            for(int j=0;j<26;j++){
+                if(arr[j]==2){
+                    return j+'a';
+                }
+            }
+        }
+        return -1;
+    }
+};

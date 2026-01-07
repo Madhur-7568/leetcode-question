@@ -1,0 +1,42 @@
+class Solution {
+public:
+    bool isPalindrome(ListNode* head) {
+        stack<int>s;
+        int size=0;
+        ListNode* slow=head;
+         ListNode* fast=head;
+         ListNode* prev=NULL;
+         while(fast!=NULL){
+               size++;
+               fast=fast->next;
+         }
+         if(size%2==0){
+            prev=head;
+         for(int i=0;i<size/2;i++){
+            s.push(slow->val);
+            slow=slow->next;
+            prev=prev->next;
+         }
+         }
+         else{
+             for(int i=0;i<=size/2;i++){
+                prev=slow;
+            s.push(slow->val);
+            slow=slow->next;
+         }
+         }
+         while(prev!=NULL){
+            if(prev->val!=s.top()){
+                return false;
+            }
+            else if(s.empty()){
+                return false;
+            }
+            else{
+                s.pop();
+            }
+            prev=prev->next;
+         }
+         return true;
+    }
+};

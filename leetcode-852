@@ -1,0 +1,26 @@
+class Solution {
+public:
+    int peakIndexInMountainArray(vector<int>& arr) {
+        int n=arr.size();
+        int str=0;
+        int end=n-1;
+        int mid;
+        int ans=0;
+        while(str<end){
+            mid=(str+end)/2;
+            if(arr[mid]>arr[mid-1] && arr[mid]>arr[mid+1] ){
+                  ans=mid;
+                  break;
+            }
+             else if(arr[mid]<arr[mid-1] && arr[mid]>arr[mid+1] ){
+                  str=str;
+                  end=mid;
+            }
+            else if(arr[mid]>arr[mid-1] && arr[mid]<arr[mid+1] ){
+                  str=mid+1;
+                  end=n-1;
+            }
+        }
+        return ans;
+    }
+};

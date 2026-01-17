@@ -1,0 +1,13 @@
+class Solution {
+public:
+    int maxDepth(TreeNode* root) {
+        int currdep=0;
+        if(root==NULL){
+            return 0;
+        }
+     int   Leftdep=maxDepth(root->left);
+     int   rightdep=maxDepth(root->right);
+        currdep=max(rightdep,Leftdep)+1;
+        return currdep;
+    }
+};

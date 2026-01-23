@@ -1,0 +1,53 @@
+class Solution {
+public:
+    ListNode* doubleIt(ListNode* head) {
+        ListNode* a=head;
+        stack<int>s;
+        while(a!=NULL){
+            s.push(a->val);
+            a=a->next;
+        }
+        ListNode* dummy=new ListNode(-1);
+        ListNode* d=dummy;
+        while(!s.empty()){
+             d->next=new ListNode(s.top());
+            d=d->next;
+            s.pop();
+        }
+        ListNode* curr=dummy->next;
+        int carry=0;
+        int dig=0;
+        ListNode* dummy2=new ListNode(0);
+        ListNode* d2=dummy2;
+         while(curr!=NULL){
+              dig=2*(curr->val)+carry;
+            if(dig>9){
+              carry=dig/10;
+              dig=dig%10;
+            }else{
+                carry=0;
+            }
+            d2->next=new ListNode(dig);
+            d2=d2->next;
+            curr=curr->next;
+         }
+         if(carry!=0){
+            d2->next=new ListNode(carry);
+         }
+          
+         ListNode* temp=dummy2->next;
+         stack<int>s2;
+         while(temp!=NULL){
+           s2.push(temp->val);
+            temp=temp->next;
+         }
+         ListNode* dummy3=new ListNode(0);
+         ListNode* d3=dummy3;
+        while(!s2.empty()){
+            d3->next=new ListNode(s2.top());
+            d3=d3->next;
+            s2.pop();
+        }
+        return dummy3->next;
+    }
+};

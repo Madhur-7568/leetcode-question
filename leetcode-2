@@ -1,0 +1,59 @@
+class Solution {
+public:
+    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
+       int carry=0;
+       int sum=0;
+       ListNode* dummy=new ListNode(-1);
+       ListNode* d=dummy;
+       ListNode* prev1=l1; 
+       ListNode* prev2=l2;
+       while(prev1!=NULL && prev2!=NULL){
+            sum=prev1->val + prev2->val+carry;
+            if(sum>9){
+                carry=sum/10;
+                sum=sum%10;
+            }
+            else {
+                carry=0;
+            }
+            d->next=new ListNode(sum);
+            d=d->next;
+            prev1=prev1->next;
+             prev2=prev2->next;
+       }
+        if(prev1!=NULL){
+            while(prev1!=NULL){
+                sum=prev1->val+carry;
+            if(sum>9){
+                carry=sum/10;
+                sum=sum%10;
+            }
+            else{
+                carry=0;
+            }
+             d->next=new ListNode(sum);
+             d=d->next;
+            prev1=prev1->next;
+            }
+        }
+           if(prev2!=NULL){
+            while(prev2!=NULL){
+                sum= prev2->val+carry;
+            if(sum>9){
+                carry=sum/10;
+                sum=sum%10;
+            }
+            else{
+                carry=0;
+            }
+             d->next=new ListNode(sum);
+             d=d->next;
+            prev2=prev2->next;
+            }
+        }
+        if(carry!=0){
+         d->next=new ListNode(carry);
+        }
+       return dummy->next;
+    }
+};

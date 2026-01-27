@@ -1,0 +1,29 @@
+class Solution {
+public:
+    int minDepth(TreeNode* root) {
+        int currdep=0;
+        if(root==NULL){
+            return 0;
+        }
+        
+     int   Leftdep=minDepth(root->left);
+     int   rightdep=minDepth(root->right);
+       if(Leftdep!=0 && rightdep==0){
+        currdep=Leftdep+1;
+       }
+      else  if(Leftdep==0 && rightdep!=0){
+        currdep=rightdep+1;
+       }
+      else    if(Leftdep==0 && rightdep==0){
+        currdep=Leftdep+rightdep+1;
+       }
+    else    if(Leftdep!=0 && rightdep!=0){
+        currdep=min(Leftdep,rightdep)+1;
+       }
+
+       
+
+        return currdep;
+    
+    }
+};

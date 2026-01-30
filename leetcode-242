@@ -1,0 +1,22 @@
+class Solution {
+public:
+    bool isAnagram(string s, string t) {
+        int arr[26]={};
+        if(s.length()!=t.length()){
+            return false;
+        }
+        for(int i=0;i<s.length();i++){
+            int idx=s[i]-'a';
+            arr[idx]++;
+        }
+        for(int j=0;j<t.length();j++){
+            int idx=t[j]-'a';
+            if(arr[idx]==0){
+                return false;
+            }
+        arr[idx]--;
+        }
+        
+        return true;
+    }
+};

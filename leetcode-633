@@ -1,0 +1,28 @@
+class Solution {
+public:
+    bool judgeSquareSum(int c) {
+        // for(long long int i=0;i*i<=c;i++){
+        //     for(long long int j=0;j<=i;j++){
+        //         if((i*i)+(j*j)==c){
+        //                 return true;
+        //         }
+        //     }
+        // }
+        /////////////////////
+        //##method==2##
+        long long int str=0;
+        long long int end=sqrt(c);
+        while(str<=end){
+            if((str*str)+(end*end)==c){
+                return true;
+            }
+            else if((str*str)+(end*end)>c){
+                end--;
+            }
+            else if((str*str)+(end*end)<c){
+                str++;
+            }
+        }
+        return false;
+    }
+};

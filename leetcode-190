@@ -1,0 +1,24 @@
+class Solution {
+public:
+    int reverseBits(int n) {
+        stack<int>s1;
+        int count=0;
+        while(n>0){
+            s1.push(n%2);
+            n/=2;
+            count++;
+        }
+        while(count<32){
+            s1.push(0);
+            count++;
+        }
+        long long int pow=1;
+        long long int ans=0;
+        while(!s1.empty()){
+               ans=ans+s1.top()*pow;
+               s1.pop();
+               pow*=2;
+        }
+        return ans;
+    }
+};

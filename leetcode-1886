@@ -1,0 +1,32 @@
+class Solution {
+public:
+   vector<vector<int>>helper(const vector<vector<int>>& mat){
+     int n=mat.size();
+        vector<vector<int>>ans;
+        for(int i=0;i<n;i++){
+            vector<int>temp;
+            int k=n-1;
+            for(int j=0;j<n;j++){
+                temp.push_back(mat[k][i]); 
+                k--;
+            }
+            ans.push_back(temp);
+        }
+     return ans;
+   }
+    bool findRotation(vector<vector<int>>& mat, vector<vector<int>>& target) {
+        if(mat==target){
+            return true;
+        }
+           else if(target==helper(mat)){
+                return true;
+            }
+            else if(target==helper(helper(mat))){
+                return true;
+             }
+             else if(target==helper(helper(helper(mat)))){
+                return true;
+             }
+             return false;
+    }
+};
